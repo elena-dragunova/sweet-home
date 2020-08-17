@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styles from './Layout.module.css'
 import Drawer from '../../components/UI/Drawer/Drawer'
+import Header from '../../components/main/Header/Header'
 
 class Layout extends Component {
   state = {
@@ -22,10 +23,11 @@ class Layout extends Component {
   render() {
     return (
       <div className={styles.Layout}>
-        <header>
-          <h1>Header</h1>
-          <button onClick={this.toggleCartHandler}>Toggle</button>
-        </header>
+        {/*<header>*/}
+        {/*  <h1>Header</h1>*/}
+        {/*  <button onClick={this.toggleCartHandler}>Toggle</button>*/}
+        {/*</header>*/}
+        <Header></Header>
 
         <main className={styles.main}>
           {this.props.children}

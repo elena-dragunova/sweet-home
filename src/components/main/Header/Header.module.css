@@ -1,0 +1,28 @@
+.Header {
+  width: 100%;
+}
+
+.Header .top {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--steel-color);
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.Header .contacts span {
+  padding: 0 4px;
+}
+
+.Header .contacts i {
+  color: #828282;
+  margin-right: 4px;
+}
+
+.Header .contacts span:not(:last-child) {
+  border-right: 1px solid #828282;
+}
+
+.Header .promo span {
+  text-decoration: underline;
+}
