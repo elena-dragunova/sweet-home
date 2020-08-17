@@ -1,9 +1,13 @@
-import React from 'react';
+import React from 'react'
+import Layout from './hoc/Layout/Layout'
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Layout>
+      <div className="App">
+        Here will be App
+      </div>
+    </Layout>
   );
 }
 
