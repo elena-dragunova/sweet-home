@@ -1,0 +1,15 @@
+.SocialIcons a {
+  display: inline-block;
+  margin: 0 6px;
+}
+
+.SocialIcons a i {
+  color: #828282;
+  font-size: 20px;
+}
+
+.SocialIcons a i:hover,
+.SocialIcons a i:focus,
+.SocialIcons a i:active {
+  color: var(--gold-color);
+}

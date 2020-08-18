@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import styles from './Header.module.css'
+import SocialIcons from '../../UI/SocialIcons/SocialIcons'
+import Badge from '../../UI/Badge/Badge'
 
 class Header extends Component  {
   render() {
@@ -17,10 +19,18 @@ class Header extends Component  {
             </span>
           </div>
 
-          <p className={styles.promo}>Free shipping on all orders over <span>$79</span></p>
+          <div className={styles.promoContainer}>
+            <p className={styles.promo}>
+              Free shipping on all orders over
+              <span>$79</span>
+            </p>
+            <Badge text="Shop Now!"/>
+          </div>
 
-          <div className={styles.social}>Social Icons</div>
 
+          <div className={styles.social}>
+            <SocialIcons/>
+          </div>
         </div>
       </header>
     )

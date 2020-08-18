@@ -4,10 +4,13 @@
 
 .Header .top {
   display: flex;
-  justify-content: space-between;
   background-color: var(--steel-color);
   padding: 10px 20px;
   font-size: 14px;
+}
+
+.Header .top > * {
+  width: 33.33%;
 }
 
 .Header .contacts span {
@@ -23,6 +26,21 @@
   border-right: 1px solid #828282;
 }
 
+.Header .promoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Header .promo {
+  text-align: center;
+  margin-right: 8px;
+}
+
 .Header .promo span {
   text-decoration: underline;
+}
+
+.Header .social {
+  text-align: right;
 }
