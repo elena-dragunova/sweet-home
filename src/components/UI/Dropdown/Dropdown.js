@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import styles from './Dropdown.module.css'
+import { NavLink } from 'react-router-dom'
 
 class Dropdown extends Component {
   state = {
@@ -29,7 +30,13 @@ class Dropdown extends Component {
         </div>
         {this.state.isOpen && <ul className={styles.list}>
           {this.props.items.map((item) => (
-            <li className={styles.listItem} key={item.id} >{item.title}</li>
+            <li key={item.id} >
+              <NavLink to={item.to}
+                       exact={item.exact}
+                       className={styles.listItem}
+                       activeClassName={styles.isActive}
+              >{item.title}</NavLink>
+            </li>
           ))}
         </ul>}
       </div>

@@ -3,17 +3,70 @@ import styles from './Header.module.css'
 import SocialIcons from '../../UI/SocialIcons/SocialIcons'
 import Badge from '../../UI/Badge/Badge'
 import Logo from '../../UI/Logo/Logo'
-import Dropdown from '../../UI/Dropdown/Dropdown'
+import MainMenu from '../../Navigation/MainMenu/MainMenu'
 
-const list = [
+const menuItems = [
   {
-    id: 0,
-    title: 'One'
+    title: 'Home',
+    exact: true,
+    to: '/'
   },
   {
-    id: 1,
-    title: 'Two'
-  }
+    title: 'Shop',
+    items: [
+      {
+        id: 0,
+        title: 'Furniture',
+        to: '/furniture',
+        exact: true,
+      },
+      {
+        id: 1,
+        title: 'Decorations',
+        to: '/decorations',
+        exact: true,
+      },
+      {
+        id: 2,
+        title: 'Home Textiles',
+        to: '/textiles',
+        exact: true,
+      },
+    ]
+  },
+  {
+    title: 'Furniture',
+    items: [
+      {
+        id: 0,
+        title: 'Chairs',
+        to: '/furniture/chairs',
+        exact: true,
+      },
+      {
+        id: 1,
+        title: 'Sofas',
+        to: '/furniture/sofas',
+        exact: true,
+      },
+      {
+        id: 2,
+        title: 'Cupboards',
+        to: '/furniture/cupboards',
+        exact: true,
+      },
+    ]
+  },
+  {
+    title: 'Blog',
+    to: '/blog',
+    exact: true,
+  },
+  {
+    title: 'Contact Us',
+    to: '/contacts',
+    exact: true,
+  },
 ];
 
 class Header extends Component  {
@@ -52,7 +105,7 @@ class Header extends Component  {
             <Logo color="black"/>
           </div>
           <div>
-            <Dropdown title="Dropdown" items={list}/>
+            <MainMenu menuItems={menuItems}/>
           </div>
           <div>333</div>
         </div>

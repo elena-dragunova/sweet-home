@@ -9,14 +9,51 @@
   padding: 4px 10px;
 }
 
+.title {
+  margin-right: 4px;
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+.title:hover,
+.title:focus,
+.title:active {
+  color: var(--gold-color);
+}
+
+.title:hover + i,
+.title:focus + i,
+.title:active + i {
+  color: var(--gold-color);
+}
+
 .list {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  width: calc(100% - 20px);
+  width: 150px;
   list-style: none;
   margin: 0;
   padding: 0 10px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.listItem {
+  display: inline-block;
+  color: var(--black-color);
+  text-decoration: none;
+  padding: 4px 10px;
+}
+
+.listItem:hover,
+.listItem:focus,
+.listItem:active {
+  color: var(--gold-color);
+}
+
+.isActive {
+  color: var(--gold-color);
 }
