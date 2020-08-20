@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styles from './Header.module.css'
 import SocialIcons from '../../UI/SocialIcons/SocialIcons'
 import Badge from '../../UI/Badge/Badge'
+import Logo from '../../UI/Logo/Logo'
 
 class Header extends Component  {
   render() {
@@ -31,6 +32,14 @@ class Header extends Component  {
           <div className={styles.social}>
             <SocialIcons/>
           </div>
+        </div>
+
+        <div className={styles.bottom}>
+          <div>
+            <Logo color="black"/>
+          </div>
+          <div>222</div>
+          <div>333</div>
         </div>
       </header>
     )

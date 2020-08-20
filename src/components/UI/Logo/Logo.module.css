@@ -1,0 +1,15 @@
+.Logo {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 4px;
+}
+
+.black {
+  color: var(--black-color);
+}
+
+.white {
+  color: var(--white-color);
+}

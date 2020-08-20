@@ -9,7 +9,8 @@
   font-size: 14px;
 }
 
-.Header .top > * {
+.Header .top > *,
+.Header .bottom > *{
   width: 33.33%;
 }
 
@@ -43,4 +44,10 @@
 
 .Header .social {
   text-align: right;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
 }
