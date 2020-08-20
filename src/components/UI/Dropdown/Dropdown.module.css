@@ -1,0 +1,22 @@
+.Dropdown {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+}
+
+.list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: calc(100% - 20px);
+  list-style: none;
+  margin: 0;
+  padding: 0 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}

@@ -3,8 +3,21 @@ import styles from './Header.module.css'
 import SocialIcons from '../../UI/SocialIcons/SocialIcons'
 import Badge from '../../UI/Badge/Badge'
 import Logo from '../../UI/Logo/Logo'
+import Dropdown from '../../UI/Dropdown/Dropdown'
+
+const list = [
+  {
+    id: 0,
+    title: 'One'
+  },
+  {
+    id: 1,
+    title: 'Two'
+  }
+];
 
 class Header extends Component  {
+
   render() {
     return (
       <header className={styles.Header}>
@@ -38,7 +51,9 @@ class Header extends Component  {
           <div>
             <Logo color="black"/>
           </div>
-          <div>222</div>
+          <div>
+            <Dropdown title="Dropdown" items={list}/>
+          </div>
           <div>333</div>
         </div>
       </header>
