@@ -144,12 +144,10 @@ class Header extends Component  {
                 Login / Sign up
               </NavLink>
             </div>
-            <NavLink to='/cart'
-                     exact
-                     className={styles.linkIcon}
-                     activeClassName={styles.isActive}>
+            <button className={styles.cartBtn}
+                    onClick={this.props.onCartClick}>
               <i className="fas fa-shopping-cart"></i>
-            </NavLink>
+            </button>
           </div>
         </div>
       </header>

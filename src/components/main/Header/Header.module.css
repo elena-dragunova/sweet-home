@@ -101,3 +101,21 @@
   top: 0;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
+
+.cartBtn {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.cartBtn i {
+  color: #828282;
+}
+
+.cartBtn:hover i,
+.cartBtn:active i,
+.cartBtn:focus i {
+  color: var(--gold-color);
+  cursor: pointer;
+}

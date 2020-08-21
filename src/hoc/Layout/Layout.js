@@ -23,11 +23,7 @@ class Layout extends Component {
   render() {
     return (
       <div className={styles.Layout}>
-        {/*<header>*/}
-        {/*  <h1>Header</h1>*/}
-        {/*  <button onClick={this.toggleCartHandler}>Toggle</button>*/}
-        {/*</header>*/}
-        <Header></Header>
+        <Header onCartClick={this.toggleCartHandler}></Header>
 
         <main className={styles.main}>
           {this.props.children}
