@@ -12,6 +12,10 @@
   src: url("./assets/fonts/RedHatDisplay-Bold.ttf") format('truetype');
 }
 
+*, * > * {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;

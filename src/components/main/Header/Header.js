@@ -4,6 +4,7 @@ import SocialIcons from '../../UI/SocialIcons/SocialIcons'
 import Badge from '../../UI/Badge/Badge'
 import Logo from '../../UI/Logo/Logo'
 import MainMenu from '../../Navigation/MainMenu/MainMenu'
+import { NavLink } from 'react-router-dom'
 
 const menuItems = [
   {
@@ -12,24 +13,24 @@ const menuItems = [
     to: '/'
   },
   {
-    title: 'Shop',
+    title: 'Catalog',
     items: [
       {
         id: 0,
         title: 'Furniture',
-        to: '/furniture',
+        to: '/catalog/furniture',
         exact: true,
       },
       {
         id: 1,
         title: 'Decorations',
-        to: '/decorations',
+        to: '/catalog/decorations',
         exact: true,
       },
       {
         id: 2,
         title: 'Home Textiles',
-        to: '/textiles',
+        to: '/catalog/textiles',
         exact: true,
       },
     ]
@@ -40,19 +41,19 @@ const menuItems = [
       {
         id: 0,
         title: 'Chairs',
-        to: '/furniture/chairs',
+        to: '/catalog/furniture/chairs',
         exact: true,
       },
       {
         id: 1,
         title: 'Sofas',
-        to: '/furniture/sofas',
+        to: '/catalog/furniture/sofas',
         exact: true,
       },
       {
         id: 2,
         title: 'Cupboards',
-        to: '/furniture/cupboards',
+        to: '/catalog/furniture/cupboards',
         exact: true,
       },
     ]
@@ -71,9 +72,37 @@ const menuItems = [
 
 class Header extends Component  {
 
+  state = {
+    scrolling: false,
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
+  handleScroll = () => {
+    if (window.scrollY === 0 && this.state.scrolling === true) {
+      this.setState({scrolling: false});
+
+    }
+    else if (window.scrollY !== 0 && this.state.scrolling !== true) {
+      this.setState({scrolling: true});
+    }
+  };
+
   render() {
+    const cls = [styles.Header];
+
+    if (this.state.scrolling) {
+      cls.push(styles['scrolling']);
+    }
+
     return (
-      <header className={styles.Header}>
+      <header className={cls.join(' ')}>
         <div className={styles.top}>
           <div className={styles.contacts}>
             <span>
@@ -101,13 +130,27 @@ class Header extends Component  {
         </div>
 
         <div className={styles.bottom}>
-          <div>
-            <Logo color="black"/>
+          <Logo color="black"/>
+
+          <MainMenu menuItems={menuItems}/>
+
+          <div className={styles.right}>
+            <div className={styles.auth}>
+              <NavLink to='/auth'
+                       exact
+                       className={styles.linkIcon}
+                       activeClassName={styles.isActive}>
+                <i className="far fa-user"></i>
+                Login / Sign up
+              </NavLink>
+            </div>
+            <NavLink to='/cart'
+                     exact
+                     className={styles.linkIcon}
+                     activeClassName={styles.isActive}>
+              <i className="fas fa-shopping-cart"></i>
+            </NavLink>
           </div>
-          <div>
-            <MainMenu menuItems={menuItems}/>
-          </div>
-          <div>333</div>
         </div>
       </header>
     )

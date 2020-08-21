@@ -50,4 +50,54 @@
   display: flex;
   align-items: center;
   padding: 10px 20px;
+  background-color: var(--white-color);
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  margin-right: 20px;
+  border-right: 1px solid var(--black-color);
+}
+
+.linkIcon {
+  color: var(--black-color);
+  text-decoration: none;
+}
+
+.linkIcon:hover,
+.linkIcon:focus,
+.linkIcon:active {
+  color: var(--gold-color);
+}
+
+.linkIcon i {
+  color: #828282;
+  margin-right: 6px;
+}
+
+.linkIcon:hover i,
+.linkIcon:focus i,
+.linkIcon:active i {
+  color: var(--gold-color);
+}
+
+
+.isActive,
+.isActive i {
+  color: var(--gold-color);
+}
+
+.Header.scrolling .bottom {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
