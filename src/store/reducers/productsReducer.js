@@ -1,7 +1,14 @@
-import {FETCH_PRODUCTS_ERROR, FETCH_PRODUCTS_START, FETCH_PRODUCTS_SUCCESS} from '../actions/actionTypes';
+import {
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCTS_START,
+  FETCH_PRODUCTS_SUCCESS, SET_BEST_SELLERS,
+  SET_TRENDING_PRODUCTS
+} from '../actions/actionTypes';
 
 const initialState = {
   products: [],
+  trendingProducts: null,
+  bestSellers: null,
   loading: false,
   error: null,
 };
@@ -23,6 +30,16 @@ export default function productsReducer(state = initialState, action) {
       return {
         ...state,
         error: action.error,
+      };
+    case SET_TRENDING_PRODUCTS:
+      return {
+        ...state,
+        trendingProducts: action.trendingProducts,
+      };
+    case SET_BEST_SELLERS:
+      return {
+        ...state,
+        bestSellers: action.bestSellers,
       };
     default:
       return state;

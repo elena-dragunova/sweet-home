@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Layout from './hoc/Layout/Layout'
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Auth from './containers/Auth/Auth';
 import Product from './containers/Product/Product';
@@ -9,16 +9,13 @@ import Blog from './containers/Blog/Blog';
 import Article from './containers/Article/Article';
 import Contacts from './containers/Contacts/Contacts';
 import Cart from './containers/Cart/Cart';
-import { connect } from 'react-redux';
-import { fetchProducts } from './store/actions/products';
+import {connect} from 'react-redux';
+import {fetchProducts} from './store/actions/products';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchProducts()
-      .then(() => {
-        console.log(this.props.products);
-    });
+    this.props.fetchProducts();
   }
 
   render() {
@@ -40,16 +37,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.products,
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return {
-    fetchProducts: () => dispatch(fetchProducts())
+    fetchProducts: () => dispatch(fetchProducts()),
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(null, mapDispatchToProps)(App);
