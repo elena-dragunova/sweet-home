@@ -38,3 +38,14 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.container {
+  max-width: 1200px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
