@@ -18,8 +18,9 @@ export default (props) => (
           props.item.options.length > 1
             ? <div>
               {
-                props.item.options.map(option => (
-                  <span className={styles.color}
+                props.item.options.map((option, index) => (
+                  <span key={index}
+                        className={styles.color}
                         style={{background: option.color}}>
 
                   </span>

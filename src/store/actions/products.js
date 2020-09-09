@@ -33,14 +33,15 @@ export function setTrendingProducts(products) {
   Object.values(products).map((category) => {
     return category.map((sub) => {
       return Object.values(sub).map((item) => {
-        item.forEach(product => {
+        return item.forEach((product) => {
           if (product.trending) {
             trendingProducts.push(product);
           }
-        });
+        })
       })
-    });
+    })
   });
+
   return {
     type: SET_TRENDING_PRODUCTS,
     trendingProducts,
@@ -52,14 +53,15 @@ export function setBestSellers(products) {
   Object.values(products).map((category) => {
     return category.map((sub) => {
       return Object.values(sub).map((item) => {
-        item.forEach(product => {
+        return item.forEach(product => {
           if (product.best_seller) {
             bestSellers.push(product);
           }
-        });
+        })
       })
-    });
+    })
   });
+
   return {
     type: SET_BEST_SELLERS,
     bestSellers,

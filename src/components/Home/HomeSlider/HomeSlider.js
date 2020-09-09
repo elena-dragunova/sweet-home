@@ -37,7 +37,8 @@ class HomeSlider extends Component {
     const settings = {
       dots: false,
       arrows: true,
-      autoplay: false,
+      autoplay: true,
+      pauseOnHover: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
