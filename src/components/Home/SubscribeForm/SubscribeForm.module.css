@@ -1,3 +1,16 @@
 .SubscribeForm {
+  margin-bottom: 24px;
+}
 
+.SubscribeForm .formInput {
+  display: flex;
+}
+
+.SubscribeForm .formInput > div {
+  flex-grow: 1;
+}
+
+.SubscribeForm .formInput button {
+  width: 200px;
+  margin-left: 16px;
 }

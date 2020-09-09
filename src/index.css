@@ -50,3 +50,9 @@ img {
   text-align: center;
   margin: 20px 0;
 }
+
+.error-message {
+  color: red;
+  margin: 4px 0;
+  text-align: left;
+}
