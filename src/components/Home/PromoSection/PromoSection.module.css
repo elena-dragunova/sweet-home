@@ -1,0 +1,72 @@
+.Promo {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.Promo .promoItem {
+  width: calc(50% - 40px);
+  padding: 10px;
+  margin: 0 20px 20px;
+  background: url(../../../assets/img/trending2.jpeg) no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+.Promo .promoItem:first-child {
+  background: url(../../../assets/img/trending1.jpeg) no-repeat center bottom;
+  background-size: cover;
+}
+
+.Promo .promoItem::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-color);
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+}
+
+.Promo .promoItem::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0 solid var(--white-color);
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.Promo .promoItem:hover::after {
+  border-width: 12px;
+}
+
+.Promo .promoItemInner {
+  padding: 40px 20px;
+  text-align: left;
+  position: relative;
+  z-index: 4;
+  color: var(--white-color);
+}
+
+.Promo .promoItemInner .promoText {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.Promo .promoItemInner .promoText span {
+  color: var(--gold-color);
+}
+
+.Promo .promoItemInner h4 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.Promo .promoItemInner button {
+  margin-top: 40px;
+}
