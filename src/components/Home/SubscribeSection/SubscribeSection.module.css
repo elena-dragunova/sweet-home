@@ -1,0 +1,15 @@
+.SubscribeSection {
+  background-image: url('../../../assets/img/subscribe-bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 0;
+}
+
+.SubscribeSectionContainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 800px;
+  max-width: calc(100% - 60px);
+  margin: 0 auto;
+  padding: 60px;
+}
