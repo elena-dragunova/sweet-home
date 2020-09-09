@@ -1,0 +1,15 @@
+.BestSellers {
+  padding: 60px 0 0;
+  text-align: center;
+}
+
+.BestSellersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px 0 0;
+}
+
+.BestSellersContainer > div {
+  width: 25%;
+  padding: 0 20px 20px;
+}

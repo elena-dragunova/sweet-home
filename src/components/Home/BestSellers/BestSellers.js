@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
-import styles from './TrendingProducts.module.css'
+import styles from './BestSellers.module.css'
 import {connect} from 'react-redux'
 import Loader from '../../UI/Loader/Loader'
 import ProductCard from '../../common/ProductCard/ProductCard'
 
-class TrendingProducts extends Component {
+class BestSellers extends Component {
 
   render() {
     return (
       <div className="container">
-        <div className={styles.TrendingProducts}>
-          <h2 className="title">Trending Products</h2>
-          <p>Top view in this week</p>
+        <div className={styles.BestSellers}>
+          <h2 className="title">Best Seller Products</h2>
+          <p>Top sale in this week</p>
           {
-            this.props.trendingProducts
-              ? <div className={styles.TrendingProductsContainer}>
+            this.props.bestSellers
+              ? <div className={styles.BestSellersContainer}>
                 {
-                  this.props.trendingProducts.map(item => (
+                  this.props.bestSellers.map(item => (
                     <ProductCard key={item.id} item={item}/>
                   ))
                 }
@@ -31,8 +31,8 @@ class TrendingProducts extends Component {
 
 function mapStateToProps(state) {
   return {
-    trendingProducts: state.products.trendingProducts,
+    bestSellers: state.products.bestSellers,
   }
 }
 
-export default connect(mapStateToProps)(TrendingProducts)
+export default connect(mapStateToProps)(BestSellers)
