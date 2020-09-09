@@ -1,0 +1,31 @@
+.PromoCollection {
+  background-color: rgba(234, 176, 50, 0.2);
+}
+
+.PromoCollectionSection {
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.PromoCollectionSection > div {
+  width: 50%;
+}
+
+.PromoCollectionSection .main h5 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.PromoCollectionSection .main h5 span {
+  color: var(--gold-color);
+}
+
+.PromoCollectionSection .main h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.PromoCollectionSection .main button {
+  margin-top: 20px;
+}
