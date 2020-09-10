@@ -125,7 +125,7 @@ class Header extends Component  {
 
 
           <div className={styles.social}>
-            <SocialIcons/>
+            <SocialIcons color="grey"/>
           </div>
         </div>
 

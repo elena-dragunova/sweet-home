@@ -1,0 +1,41 @@
+.MainButton {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.MainButton i {
+  margin-left: 6px;
+}
+
+.MainButton:hover,
+.MainButton:focus,
+.MainButton:active {
+  background-color: var(--gold-color);
+}
+
+.AccentButton {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--gold-color);
+  color: var(--white-color);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.AccentButton:hover,
+.AccentButton:focus,
+.AccentButton:active {
+  background-color: var(--black-color);
+}

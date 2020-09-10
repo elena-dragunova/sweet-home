@@ -12,7 +12,8 @@
   src: url("./assets/fonts/RedHatDisplay-Bold.ttf") format('truetype');
 }
 
-*, * > * {
+*, * > *,
+*:after, *:before {
   box-sizing: border-box;
 }
 
@@ -37,4 +38,21 @@ h1, h2, h3, h4, h5, h6, p {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.error-message {
+  color: red;
+  margin: 4px 0;
+  text-align: left;
 }

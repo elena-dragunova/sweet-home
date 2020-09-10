@@ -1,0 +1,18 @@
+.Input {
+  width: 100%;
+}
+
+.Input input {
+  width: 100%;
+  height: 40px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: transparent;
+  outline: none;
+}
+
+.Input input:focus,
+.Input input:active {
+  border-color: var(--gold-color);
+}

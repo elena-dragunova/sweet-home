@@ -4,7 +4,6 @@
 }
 
 .SocialIcons a i {
-  color: #828282;
   font-size: 20px;
 }
 
@@ -12,4 +11,12 @@
 .SocialIcons a i:focus,
 .SocialIcons a i:active {
   color: var(--gold-color);
+}
+
+.SocialIcons.grey a i {
+  color: #828282;
+}
+
+.SocialIcons.white a i {
+  color: var(--white-color);
 }
