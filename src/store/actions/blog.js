@@ -3,6 +3,7 @@ import {
   FETCH_ARTICLES_ERROR,
   FETCH_ARTICLES_START,
   FETCH_ARTICLES_SUCCESS,
+  GET_LAST_ARTICLES,
 } from './actionTypes';
 
 export function fetchArticlesStart() {
@@ -25,6 +26,32 @@ export function fetchArticlesError(err) {
   }
 }
 
+export function getLastArticles (articles) {
+  const allArticles = [];
+  Object.values(articles).map((category) => {
+    return Object.values(category).map((item) => {
+      return item.forEach(article => {
+        allArticles.push(article)
+      })
+    })
+  });
+  const sortedArticles = allArticles.sort((a,b) => {
+    return b.date - a.date;
+  });
+
+  let lastArticles;
+  if (sortedArticles.length >= 3) {
+    lastArticles = sortedArticles.slice(0, 3);
+  } else {
+    lastArticles = sortedArticles;
+  }
+
+  return {
+    type: GET_LAST_ARTICLES,
+    lastArticles,
+  }
+}
+
 export function fetchArticles() {
   return async dispatch => {
     dispatch(fetchArticlesStart());
@@ -32,6 +59,7 @@ export function fetchArticles() {
       const response = await axios.get('/blog.json');
       const data = response.data;
       dispatch(fetchArticlesSuccess(data));
+      dispatch(getLastArticles(data));
     } catch(err) {
       dispatch(fetchArticlesError(err))
     }

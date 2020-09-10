@@ -8,6 +8,7 @@ const initialState = {
   articles: [],
   loading: false,
   error: null,
+  lastArticles: null,
 };
 
 export default function blogReducer(state = initialState, action) {
