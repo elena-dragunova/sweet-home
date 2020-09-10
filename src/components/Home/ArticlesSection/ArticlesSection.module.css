@@ -1,0 +1,20 @@
+.ArticlesSection {
+  padding: 60px 0;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.ArticlesSection h2,
+.ArticlesSection p {
+  margin-bottom: 20px;
+}
+
+.ArticlesContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ArticlesContainer > div {
+  width: calc(33.33% - 40px);
+  margin: 0 20px;
+}

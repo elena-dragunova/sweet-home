@@ -1,7 +1,7 @@
 import {
   FETCH_ARTICLES_START,
   FETCH_ARTICLES_SUCCESS,
-  FETCH_ARTICLES_ERROR,
+  FETCH_ARTICLES_ERROR, GET_LAST_ARTICLES,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -29,6 +29,11 @@ export default function blogReducer(state = initialState, action) {
         ...state,
         loading: false,
         err: action.err,
+      };
+    case GET_LAST_ARTICLES:
+      return {
+        ...state,
+        lastArticles: action.lastArticles,
       };
     default:
       return state;

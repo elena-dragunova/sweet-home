@@ -1,0 +1,75 @@
+.ArticleCard {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: 100%;
+}
+
+.ArticleCard .data {
+  display: flex;
+  align-items: flex-end;
+  margin: 16px 0 0;
+}
+
+.ArticleCard .author {
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.ArticleCard .date {
+  font-size: 14px;
+}
+
+.ArticleCard .title {
+  min-height: 65px;
+  margin-bottom: 20px;
+}
+
+.ArticleCard .link {
+  display: inline-block;
+  width: 156px;
+  text-align: center;
+  padding: 14px;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--black-color);
+  text-decoration: none;
+  outline: none;
+}
+
+.ArticleCard .link i {
+  margin-left: 10px;
+}
+
+.ArticleCard .link:hover,
+.ArticleCard .link:focus,
+.ArticleCard .link:hover i,
+.ArticleCard .link:focus {
+  color: var(--gold-color);
+  border-color: var(--gold-color);
+}
