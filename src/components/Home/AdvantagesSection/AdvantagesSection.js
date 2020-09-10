@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './AdvantagesSection.module.css'
 import { NavLink } from 'react-router-dom'
-import Button from '../../UI/Button/Button';
 
 export default () => (
   <div className={styles.AdvantagesSection}>
