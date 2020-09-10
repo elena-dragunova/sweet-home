@@ -37,3 +37,38 @@
   max-height: 100%;
   max-width: none;
 }
+
+.ImageWrapper:before,
+.ImageWrapper:after {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  content: '';
+  opacity: 0;
+  z-index: 2;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.ImageWrapper:before {
+  border-top: 1px solid var(--white-color);
+  border-bottom: 1px solid var(--white-color);
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+.ImageWrapper:after {
+  border-right: 1px solid var(--white-color);
+  border-left: 1px solid var(--white-color);
+  -webkit-transform: scale(1,0);
+  transform: scale(1,0);
+}
+
+.ImageWrapper:hover:before,
+.ImageWrapper:hover:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
