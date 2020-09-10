@@ -11,11 +11,13 @@ import Contacts from './containers/Contacts/Contacts';
 import Cart from './containers/Cart/Cart';
 import {connect} from 'react-redux';
 import {fetchProducts} from './store/actions/products';
+import {fetchArticles} from './store/actions/blog';
 
 class App extends Component {
 
   componentDidMount() {
     this.props.fetchProducts();
+    this.props.fetchArticles();
   }
 
   render() {
@@ -40,6 +42,7 @@ class App extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
+    fetchArticles: () => dispatch(fetchArticles()),
   }
 }
 
