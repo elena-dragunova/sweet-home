@@ -15,15 +15,15 @@ export default props => {
         >Home</NavLink>
       </li>
       {
-        url.map((link) => {
+        url.map((link, index) => {
           if (link !== '') {
             const endOfThePath = props.url.indexOf(link) + link.length;
             const path = props.url.substr(0, endOfThePath);
 
             return (
-              <li>
+              <li key={index}>
                 <NavLink to={path}
-                         exact="exact"
+                         exact
                          className={styles.BreadcrumbsLink}
                          activeClassName={styles.Active}
                 >{link}</NavLink>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './Catalog.module.css'
-import Breadcrumbs from '../../components/UI/Breadcrumbs/Breadcrumbs'
+import TitleSection from '../../components/UI/TitleSection/TitleSection'
 
 class Catalog extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Catalog extends Component {
   render() {
     return (
       <div>
-        <Breadcrumbs url={this.props.match.url}/>
+        <TitleSection url={this.props.match.url}/>
         <h1>Catalog</h1>
       </div>
     )

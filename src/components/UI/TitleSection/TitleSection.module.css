@@ -1,0 +1,26 @@
+.TitleSection {
+  background-color: var(--steel-color);
+}
+
+.TitleSection h1 {
+  text-transform: capitalize;
+  font-size: 40px;
+}
+
+.TitleContainer {
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.TitleContainer > div {
+  width: 50%;
+}
+
+.TitleContainer img {
+  display: block;
+  height: 200px;
+  width: auto;
+  margin-right: 0;
+  margin-left: auto;
+}
