@@ -5,6 +5,7 @@ import PromoSection from '../../components/Home/PromoSection/PromoSection'
 import PromoCollection from '../../components/Home/PromoCollection/PromoCollection'
 import BestSellers from '../../components/Home/BestSellers/BestSellers'
 import SubscribeSection from '../../components/Home/SubscribeSection/SubscribeSection'
+import AdvantagesSection from '../../components/Home/AdvantagesSection/AdvantagesSection'
 
 export default () => (
   <div>
@@ -13,6 +14,7 @@ export default () => (
     <PromoSection />
     <PromoCollection />
     <BestSellers />
-    <SubscribeSection/>
+    <SubscribeSection />
+    <AdvantagesSection />
   </div>
 )
