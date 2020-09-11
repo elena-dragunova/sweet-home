@@ -9,7 +9,7 @@ export default props => {
     <ul className={styles.Breadcrumbs}>
       <li>
         <NavLink to="/"
-                 exact="exact"
+                 exact
                  className={styles.BreadcrumbsLink}
                  activeClassName={styles.Active}
         >Home</NavLink>

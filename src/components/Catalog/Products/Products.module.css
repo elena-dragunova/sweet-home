@@ -1,0 +1,10 @@
+.Products {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.Products > div {
+  width: calc(25% - 40px);
+  margin: 0 20px 20px;
+}

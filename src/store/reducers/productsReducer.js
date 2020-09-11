@@ -7,7 +7,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  products: [],
+  products: null,
   trendingProducts: null,
   bestSellers: null,
   loading: false,
