@@ -13,7 +13,7 @@ export default props => {
           : null
       }
       {
-        props.categories.length > 0
+        props.colors.length > 0
           ? <ColorFilter colors={props.colors}
                          onChange={props.onColorsChange}/>
           : null
