@@ -13,7 +13,7 @@ class Catalog extends Component {
     this.state = {
       products: [],
       categories: [],
-      filteredProducts: null,
+      filteredProducts: [],
     }
   }
 
@@ -52,7 +52,7 @@ class Catalog extends Component {
 
     }
     this.setState({products: categoryProducts});
-    this.setState({filteredProducts: categoryProducts});
+    this.setState({filteredProducts: []});
   }
 
   componentDidMount() {
@@ -77,11 +77,43 @@ class Catalog extends Component {
 
   filterProductsByCategory(category, isChecked) {
     const products = this.state.products;
-    console.log(products)
     const isSub = !!this.props.match.params.type;
     if (isSub && isChecked) {
-      const currentCategory = this.props.match.params.type;
+      const currentFilter = products.filter((product) => {
+        return product.subcategory === category;
+      });
+      const filtered = this.state.filteredProducts;
+      currentFilter.forEach((item) => {
+        filtered.push(item);
+      });
+      this.setState({filteredProducts: filtered})
+    }
 
+    if (!isSub && isChecked) {
+      const currentFilter = products.filter((product) => {
+        return product.category === category;
+      });
+      const filtered = this.state.filteredProducts;
+      currentFilter.forEach((item) => {
+        filtered.push(item);
+      });
+      this.setState({filteredProducts: filtered})
+    }
+
+    if (isSub && !isChecked) {
+      const currentFiltered = this.state.filteredProducts;
+      const filtered = currentFiltered.filter((item) => {
+        return item.subcategory !== category;
+      });
+      this.setState({filteredProducts: filtered})
+    }
+
+    if (!isSub && !isChecked) {
+      const currentFiltered = this.state.filteredProducts;
+      const filtered = currentFiltered.filter((item) => {
+        return item.category !== category;
+      });
+      this.setState({filteredProducts: filtered})
     }
   }
 
@@ -96,9 +128,11 @@ class Catalog extends Component {
             </div>
             <div className={styles.CatalogMain}>
               {
-                this.state.filteredProducts
+                this.state.filteredProducts.length > 0
                   ?  <Products products={this.state.filteredProducts}/>
-                  : <Loader/>
+                  : this.state.products.length > 0
+                    ? <Products products={this.state.products}/>
+                    : <Loader/>
               }
             </div>
 
