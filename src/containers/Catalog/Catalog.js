@@ -14,6 +14,7 @@ class Catalog extends Component {
       products: [],
       categories: [],
       colors: [],
+      selectedColors: [],
       filteredProductsByCategory: [],
       filteredProductsByColor: [],
       filtered: [],
@@ -87,7 +88,6 @@ class Catalog extends Component {
     if (catalogUploaded || anotherDynamicRoute) {
       this.filterCatalogItemsByCategory();
     }
-    console.log(this.state);
   }
 
   onCategoriesChangeHandler(e) {
@@ -147,7 +147,13 @@ class Catalog extends Component {
   filterProductsByColor(color, isChecked) {
     const products = this.state.products;
     const colorFilters = [];
+    const selectedColors = this.state.selectedColors;
+
     if (isChecked) {
+      if (!selectedColors.includes(color)) {
+        selectedColors.push(color);
+      }
+
       products.forEach((product) => {
         if (product.options.some((option) => {
           return option.color === color;
@@ -163,13 +169,22 @@ class Catalog extends Component {
       });
       this.setState({filteredProductsByColor: filtered})
     } else {
+      const currentColorInd = selectedColors.findIndex(item => item === color);
+      selectedColors.splice(currentColorInd, 1);
+
       let currentFiltered = this.state.filteredProductsByColor;
       let filtered = currentFiltered.filter((item) => {
-        return item.options.every((option) => {
-          return option.color !== color
-        })
+        const hasNoColorsUnselected = item.options.every((opt) => {
+          return opt.color !== color;
+        });
+        const hasAnotherSelectedColor = item.options.some((opt) => {
+          return selectedColors.includes(opt.color);
+        });
+
+        return hasNoColorsUnselected || hasAnotherSelectedColor;
       });
 
+      this.setState({selectedColors});
       this.setState({filteredProductsByColor: filtered})
     }
   }
