@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import styles from './Catalog.module.css'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import TitleSection from '../../components/UI/TitleSection/TitleSection'
 import Products from '../../components/Catalog/Products/Products'
 import Loader from '../../components/UI/Loader/Loader';
@@ -17,7 +17,14 @@ class Catalog extends Component {
       selectedColors: [],
       filteredProductsByCategory: [],
       filteredProductsByColor: [],
+      filteredProductsByPrice: [],
       filtered: [],
+      priceRanges: [
+        [0, 20],
+        [20, 50],
+        [50, 100],
+        [100, 1000]
+      ],
     }
   }
 
@@ -189,6 +196,31 @@ class Catalog extends Component {
     }
   }
 
+  onPricesChangeHandler(e) {
+    const priceIndex = e.target.id;
+    const isChecked = e.target.checked;
+    this.filterProductsByPrice(priceIndex, isChecked);
+  }
+
+  filterProductsByPrice(priceIndex, isChecked) {
+    const products = this.state.products;
+    let filteredByPrice = this.state.filteredProductsByPrice;
+    const prices = this.state.priceRanges[priceIndex]
+
+    if (isChecked) {
+      const filtered = products.filter((product) => {
+        return product.price >= prices[0] && product.price <= prices[1];
+      });
+      filtered.forEach(item => filteredByPrice.push(item));
+    } else {
+      filteredByPrice = filteredByPrice.filter((product) => {
+        return product.price <= prices[0] || product.price >= prices[1];
+      });
+    }
+
+    this.setState({filteredProductsByPrice: filteredByPrice})
+  }
+
   render() {
     return (
       <div className={styles.Catalog}>
@@ -198,13 +230,15 @@ class Catalog extends Component {
             <div className={styles.CatalogFilter}>
               <CatalogFilter categories={this.state.categories}
                              colors={this.state.colors}
+                             priceRanges={this.state.priceRanges}
                              onCategoriesChange={this.onCategoriesChangeHandler.bind(this)}
-                             onColorsChange={this.onColorsChangeHandler.bind(this)}/>
+                             onColorsChange={this.onColorsChangeHandler.bind(this)}
+                             onPricesChange={this.onPricesChangeHandler.bind(this)}/>
             </div>
             <div className={styles.CatalogMain}>
               {
-                this.state.filteredProductsByColor.length > 0
-                  ?  <Products products={this.state.filteredProductsByColor}/>
+                this.state.filteredProductsByPrice.length > 0
+                  ?  <Products products={this.state.filteredProductsByPrice}/>
                   : this.state.products.length > 0
                     ? <Products products={this.state.products}/>
                     : <Loader/>

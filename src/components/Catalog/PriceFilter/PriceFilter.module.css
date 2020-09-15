@@ -1,0 +1,9 @@
+.PriceFilter {
+  margin-top: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
+.PriceFilter h4 {
+  margin-bottom: 20px;
+}

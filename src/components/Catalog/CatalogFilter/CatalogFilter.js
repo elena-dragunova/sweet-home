@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './CatalogFilter.module.css'
 import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import ColorFilter from '../ColorFilter/ColorFilter';
+import PriceFilter from '../PriceFilter/PriceFilter';
 
 export default props => {
   return (
@@ -17,6 +18,12 @@ export default props => {
           ? <ColorFilter colors={props.colors}
                          onChange={props.onColorsChange}/>
           : null
+      }
+      {
+        props.priceRanges.length > 0
+        ? <PriceFilter priceRanges={props.priceRanges}
+                       onChange={props.onPricesChange}/>
+        : null
       }
     </div>
   )
