@@ -20,16 +20,18 @@ class Catalog extends Component {
   filterCatalogItemsByCategory() {
     const category = this.props.match.params.type;
     const sub = this.props.match.params.sub;
-
     const catalog = this.props.catalog;
     let categoryProducts = [];
 
     if (sub) {
+
       this.setState({categories: []});
       categoryProducts = catalog.filter((item) => {
         return item.subcategory === sub;
       });
+
     } else if (category) {
+
       const categories = [];
       catalog.forEach((item) => {
         if (item.category === category) {
@@ -41,7 +43,9 @@ class Catalog extends Component {
         return item.category === category;
       });
       this.setState({categories: categoriesSet});
+
     } else {
+
       const categories = [];
       catalog.forEach((item) => {
         categories.push(item.category);
@@ -49,8 +53,8 @@ class Catalog extends Component {
       const categoriesSet = [...new Set(categories)];
       this.setState({categories: categoriesSet});
       categoryProducts = catalog;
-
     }
+
     this.setState({products: categoryProducts});
     this.setState({filteredProducts: []});
   }

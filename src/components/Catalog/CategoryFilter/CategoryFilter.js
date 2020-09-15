@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './CategoryFilter.module.css'
+import Checkbox from '../../UI/Checkbox/Checkbox';
 
 export default props => (
   <div className={styles.CategoryFilter}>
@@ -8,16 +9,11 @@ export default props => (
       props.categories.map((category, index) => {
 
         return (
-          <label htmlFor={"category" + index}
-                 className={styles.CategoryCheckbox}
-                 key={index}>
-            {category}
-            <input id={"category" + index}
-                   name={category}
-                   type="checkbox"
-                   onChange={props.onChange}/>
-            <span className={styles.checkmark} />
-          </label>
+          <Checkbox label={category}
+                    key={index}
+                    id={'category' + index}
+                    color="black"
+                    onChange={props.onChange}/>
         )
       })
     }
