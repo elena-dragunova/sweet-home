@@ -14,7 +14,9 @@ class Catalog extends Component {
       products: [],
       categories: [],
       colors: [],
-      filteredProducts: [],
+      filteredProductsByCategory: [],
+      filteredProductsByColor: [],
+      filtered: [],
     }
   }
 
@@ -57,7 +59,7 @@ class Catalog extends Component {
     }
 
     this.setState({products: categoryProducts});
-    this.setState({filteredProducts: []});
+    this.setState({filteredProductsByCategory: []});
 
     this.setPossibleColors(catalog);
   }
@@ -85,6 +87,7 @@ class Catalog extends Component {
     if (catalogUploaded || anotherDynamicRoute) {
       this.filterCatalogItemsByCategory();
     }
+    console.log(this.state);
   }
 
   onCategoriesChangeHandler(e) {
@@ -100,38 +103,74 @@ class Catalog extends Component {
       const currentFilter = products.filter((product) => {
         return product.subcategory === category;
       });
-      const filtered = this.state.filteredProducts;
+      const filtered = this.state.filteredProductsByCategory;
       currentFilter.forEach((item) => {
         filtered.push(item);
       });
-      this.setState({filteredProducts: filtered})
+      this.setState({filteredProductsByCategory: filtered})
     }
 
     if (!isSub && isChecked) {
       const currentFilter = products.filter((product) => {
         return product.category === category;
       });
-      const filtered = this.state.filteredProducts;
+      const filtered = this.state.filteredProductsByCategory;
       currentFilter.forEach((item) => {
         filtered.push(item);
       });
-      this.setState({filteredProducts: filtered})
+      this.setState({filteredProductsByCategory: filtered})
     }
 
     if (isSub && !isChecked) {
-      const currentFiltered = this.state.filteredProducts;
+      const currentFiltered = this.state.filteredProductsByCategory;
       const filtered = currentFiltered.filter((item) => {
         return item.subcategory !== category;
       });
-      this.setState({filteredProducts: filtered})
+      this.setState({filteredProductsByCategory: filtered})
     }
 
     if (!isSub && !isChecked) {
-      const currentFiltered = this.state.filteredProducts;
+      const currentFiltered = this.state.filteredProductsByCategory;
       const filtered = currentFiltered.filter((item) => {
         return item.category !== category;
       });
-      this.setState({filteredProducts: filtered})
+      this.setState({filteredProductsByCategory: filtered})
+    }
+  }
+
+  onColorsChangeHandler(e) {
+    const color = e.target.name;
+    const isChecked = e.target.checked;
+    this.filterProductsByColor(color, isChecked);
+  }
+
+  filterProductsByColor(color, isChecked) {
+    const products = this.state.products;
+    const colorFilters = [];
+    if (isChecked) {
+      products.forEach((product) => {
+        if (product.options.some((option) => {
+          return option.color === color;
+        })) {
+          colorFilters.push(product);
+        }
+      });
+      const filtered = this.state.filteredProductsByColor;
+      colorFilters.forEach((item) => {
+        if (!filtered.find((product) => product.id === item.id)) {
+          filtered.push(item);
+        }
+      });
+      this.setState({filteredProductsByColor: filtered})
+    } else {
+      let currentFiltered = this.state.filteredProductsByColor;
+      let filtered = currentFiltered.filter((item) => {
+        return item.options.every((option) => {
+          return option.color !== color
+        })
+      });
+
+      this.setState({filteredProductsByColor: filtered})
     }
   }
 
@@ -144,12 +183,13 @@ class Catalog extends Component {
             <div className={styles.CatalogFilter}>
               <CatalogFilter categories={this.state.categories}
                              colors={this.state.colors}
-                             onCategoriesChange={this.onCategoriesChangeHandler.bind(this)}/>
+                             onCategoriesChange={this.onCategoriesChangeHandler.bind(this)}
+                             onColorsChange={this.onColorsChangeHandler.bind(this)}/>
             </div>
             <div className={styles.CatalogMain}>
               {
-                this.state.filteredProducts.length > 0
-                  ?  <Products products={this.state.filteredProducts}/>
+                this.state.filteredProductsByColor.length > 0
+                  ?  <Products products={this.state.filteredProductsByColor}/>
                   : this.state.products.length > 0
                     ? <Products products={this.state.products}/>
                     : <Loader/>

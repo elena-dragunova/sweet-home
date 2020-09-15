@@ -9,7 +9,10 @@ export default props => (
       {
         props.colors.map((color, index) => {
           return (
-            <ColorCheckbox key={index} color={color} name={color}/>
+            <ColorCheckbox key={index}
+                           color={color}
+                           name={color}
+                           onChange={props.onChange}/>
           )
         })
       }
