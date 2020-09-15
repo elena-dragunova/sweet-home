@@ -1,0 +1,17 @@
+.ColorFilter {
+  margin-top: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
+.ColorFilterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ColorFilterContainer > * {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

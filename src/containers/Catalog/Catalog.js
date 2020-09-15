@@ -13,6 +13,7 @@ class Catalog extends Component {
     this.state = {
       products: [],
       categories: [],
+      colors: [],
       filteredProducts: [],
     }
   }
@@ -57,6 +58,19 @@ class Catalog extends Component {
 
     this.setState({products: categoryProducts});
     this.setState({filteredProducts: []});
+
+    this.setPossibleColors(catalog);
+  }
+
+  setPossibleColors(catalog) {
+    const colors = [];
+    catalog.forEach((product) => {
+      product.options.forEach((option) => {
+        colors.push(option.color);
+      });
+    });
+    const uniqueColors = [...new Set(colors)];
+    this.setState({colors: uniqueColors});
   }
 
   componentDidMount() {
@@ -73,7 +87,7 @@ class Catalog extends Component {
     }
   }
 
-  onChangeHandler(e) {
+  onCategoriesChangeHandler(e) {
     const category = e.target.name;
     const isChecked = e.target.checked;
     this.filterProductsByCategory(category, isChecked);
@@ -128,7 +142,9 @@ class Catalog extends Component {
         <div className="container">
           <div className={styles.CatalogContainer}>
             <div className={styles.CatalogFilter}>
-              <CatalogFilter categories={this.state.categories} onChange={this.onChangeHandler.bind(this)}/>
+              <CatalogFilter categories={this.state.categories}
+                             colors={this.state.colors}
+                             onCategoriesChange={this.onCategoriesChangeHandler.bind(this)}/>
             </div>
             <div className={styles.CatalogMain}>
               {
