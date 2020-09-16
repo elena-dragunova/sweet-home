@@ -1,3 +1,130 @@
 .Product {
+  padding-bottom: 60px;
+}
 
+.ProductMain {
+  margin-top: 40px;
+  display: flex;
+}
+
+.ProductImages {
+  width: 100px;
+  min-width: 100px;
+  margin: 0 20px;
+}
+
+.ProductImages img {
+  cursor: pointer;
+}
+
+.ProductMainImage {
+  width: 400px;
+  min-width: 400px;
+}
+
+.ProductData {
+  flex-grow: 1;
+  margin: 0 20px;
+  padding-left: 40px;
+}
+
+.ImageWrapper {
+  width: 100%;
+  height: 0;
+  padding-top: 120%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.ImageWrapper img {
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -50%;
+  right: -50%;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  max-width: none;
+}
+
+.ProductData h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.Rating {
+  margin-bottom: 20px;
+}
+
+.ProductDescription {
+  margin-bottom: 30px;
+}
+
+.ColorOptions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.Color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid lightgray;
+  cursor: pointer;
+}
+
+.ActiveColor {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-color);
+}
+
+.ProductPrice {
+  color: var(--gold-color);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.ProductActions {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.ProductActions button {
+  margin-left: 10px;
+}
+
+.ProductActions i {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.ProductFeatures {
+  margin-top: 30px;
+}
+
+.ProductFeature {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.ProductFeature h5 {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.ProductFeature p {
+  font-size: 14px;
 }

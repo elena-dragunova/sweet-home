@@ -1,0 +1,26 @@
+.QuantityInput {
+  display: inline-flex;
+  min-width: 120px;
+  height: 40px;
+  background-color: var(--steel-color);
+}
+
+.QuantityInput button {
+  border: none;
+  background-color: transparent;
+  padding: 7px;
+  width: 40px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+}
+
+.QuantityInputValue {
+  font-weight: 700;
+  font-size: 18px;
+  padding: 7px;
+  min-width: 40px;
+  text-align: center;
+}
