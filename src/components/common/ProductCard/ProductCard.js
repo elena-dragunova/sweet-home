@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './ProductCard.module.css'
+import { NavLink } from 'react-router-dom'
 
 export default (props) => (
 
@@ -11,7 +12,14 @@ export default (props) => (
     </div>
 
     <div className={styles.ProductCard_text}>
-      <h4><a href="#">{props.item.name}</a></h4>
+      <h4>
+        <NavLink to={`/product/${props.item.id}`}
+                 exact
+                 className={styles.ProductCardLink}
+                 activeClassName={styles.Active}>
+          {props.item.name}
+        </NavLink>
+      </h4>
       <div className={styles.ProductCard_price}>
         <p>$ {props.item.price.toFixed(2)}</p>
         {
