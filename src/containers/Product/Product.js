@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Loader from '../../components/UI/Loader/Loader';
 import { Rating } from '@material-ui/lab';
 import QuantityInput from '../../components/UI/QuantityInput/QuantityInput';
+import Button from '../../components/UI/Button/Button';
 
 class Product extends Component {
   constructor(props) {
@@ -89,16 +90,43 @@ class Product extends Component {
                         })
                       }
                     </div>
-                    <p className={styles.ProductPrice}>${this.state.product.price.toFixed(2)}</p>
-                    <QuantityInput quantity={this.state.productQuantity}
-                                   minVal={1}
-                                   maxVal={this.state.product.options[this.state.selectedOption].quantity}
-                                   onChange={this.handleQuantityChange.bind(this)}/>
-                  </div>
-                </div>
+                    <p className={styles.ProductPrice}>$ {this.state.product.price.toFixed(2)}</p>
 
-                <div className={styles.ProductDescriptions}>
-                  descriptions
+                    <div className={styles.ProductActions}>
+                      <QuantityInput quantity={this.state.productQuantity}
+                                     minVal={1}
+                                     maxVal={this.state.product.options[this.state.selectedOption].quantity}
+                                     onChange={this.handleQuantityChange.bind(this)}/>
+                      <Button buttonStyle="AccentButton">
+                        <i className="fas fa-shopping-cart"></i>
+                        Add To Cart
+                      </Button>
+                    </div>
+
+                    <div className={styles.ProductFeatures}>
+                      <div className={styles.ProductFeature}>
+                        <h5>Quantity:</h5>
+                        <p>{this.state.product.options[this.state.selectedOption].quantity}</p>
+                      </div>
+                      <div className={styles.ProductFeature}>
+                        <h5>Vendor:</h5>
+                        <p>{this.state.product.vendor}</p>
+                      </div>
+                      <div className={styles.ProductFeature}>
+                        <h5>Dimensions:</h5>
+                        {
+                          this.state.product.dimentions
+                          ? <p>
+                              Width: {this.state.product.dimentions.width},
+                              height: {this.state.product.dimentions.height},
+                              depth: {this.state.product.dimentions.depth}
+                          </p>
+                          : <p>N/A</p>
+                        }
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
               </div>
