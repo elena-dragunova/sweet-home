@@ -74,7 +74,7 @@ class Catalog extends Component {
     this.setState({filteredProductsByPrice: []});
     this.setState({filtered: categoryProducts});
 
-    this.setPossibleColors(catalog);
+    this.setPossibleColors(categoryProducts);
   }
 
   setPossibleColors(catalog) {
