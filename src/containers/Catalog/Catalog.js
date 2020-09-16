@@ -14,7 +14,9 @@ class Catalog extends Component {
       products: [],
       categories: [],
       colors: [],
+      selectedCategories: [],
       selectedColors: [],
+      selectedPrices: [],
       filteredProductsByCategory: [],
       filteredProductsByColor: [],
       filteredProductsByPrice: [],
@@ -68,6 +70,9 @@ class Catalog extends Component {
 
     this.setState({products: categoryProducts});
     this.setState({filteredProductsByCategory: []});
+    this.setState({filteredProductsByColor: []});
+    this.setState({filteredProductsByPrice: []});
+    this.setState({filtered: categoryProducts});
 
     this.setPossibleColors(catalog);
   }
@@ -101,12 +106,17 @@ class Catalog extends Component {
     const category = e.target.name;
     const isChecked = e.target.checked;
     this.filterProductsByCategory(category, isChecked);
+    this.filterProducts();
   };
 
   filterProductsByCategory(category, isChecked) {
+    const selectedCategories = this.state.selectedCategories;
     const products = this.state.products;
     const isSub = !!this.props.match.params.type;
     if (isSub && isChecked) {
+      if (!selectedCategories.includes(category)) {
+        selectedCategories.push(category);
+      }
       const currentFilter = products.filter((product) => {
         return product.subcategory === category;
       });
@@ -118,6 +128,9 @@ class Catalog extends Component {
     }
 
     if (!isSub && isChecked) {
+      if (!selectedCategories.includes(category)) {
+        selectedCategories.push(category);
+      }
       const currentFilter = products.filter((product) => {
         return product.category === category;
       });
@@ -129,6 +142,9 @@ class Catalog extends Component {
     }
 
     if (isSub && !isChecked) {
+      const unselectedInd = selectedCategories.findIndex(item => item === category);
+      selectedCategories.splice(unselectedInd, 1);
+
       const currentFiltered = this.state.filteredProductsByCategory;
       const filtered = currentFiltered.filter((item) => {
         return item.subcategory !== category;
@@ -137,11 +153,15 @@ class Catalog extends Component {
     }
 
     if (!isSub && !isChecked) {
+      const unselectedInd = selectedCategories.findIndex(item => item === category);
+      selectedCategories.splice(unselectedInd, 1);
+
       const currentFiltered = this.state.filteredProductsByCategory;
       const filtered = currentFiltered.filter((item) => {
         return item.category !== category;
       });
-      this.setState({filteredProductsByCategory: filtered})
+      this.setState({filteredProductsByCategory: filtered});
+      this.setState({selectedCategories});
     }
   }
 
@@ -149,6 +169,7 @@ class Catalog extends Component {
     const color = e.target.name;
     const isChecked = e.target.checked;
     this.filterProductsByColor(color, isChecked);
+    this.filterProducts();
   }
 
   filterProductsByColor(color, isChecked) {
@@ -192,7 +213,7 @@ class Catalog extends Component {
       });
 
       this.setState({selectedColors});
-      this.setState({filteredProductsByColor: filtered})
+      this.setState({filteredProductsByColor: filtered});
     }
   }
 
@@ -200,25 +221,70 @@ class Catalog extends Component {
     const priceIndex = e.target.id;
     const isChecked = e.target.checked;
     this.filterProductsByPrice(priceIndex, isChecked);
+    this.filterProducts();
   }
 
   filterProductsByPrice(priceIndex, isChecked) {
+    const selectedPrices = this.state.selectedPrices;
     const products = this.state.products;
     let filteredByPrice = this.state.filteredProductsByPrice;
-    const prices = this.state.priceRanges[priceIndex]
+    const prices = this.state.priceRanges[priceIndex];
 
     if (isChecked) {
+      if (!selectedPrices.includes(priceIndex)) {
+        selectedPrices.push(priceIndex);
+      }
+
       const filtered = products.filter((product) => {
         return product.price >= prices[0] && product.price <= prices[1];
       });
       filtered.forEach(item => filteredByPrice.push(item));
     } else {
+      const unselectedInd = selectedPrices.findIndex(item => item === priceIndex);
+      selectedPrices.splice(unselectedInd, 1);
+
       filteredByPrice = filteredByPrice.filter((product) => {
         return product.price <= prices[0] || product.price >= prices[1];
       });
     }
 
-    this.setState({filteredProductsByPrice: filteredByPrice})
+    this.setState({filteredProductsByPrice: filteredByPrice});
+    this.setState({selectedPrices});
+  }
+
+  filterProducts() {
+    this.setState((state) => {
+      const products = state.products;
+      let filteredByCat;
+      let filteredByColor;
+      let filteredByPrice;
+
+      if (state.selectedCategories.length > 0) {
+        filteredByCat = state.filteredProductsByCategory;
+      } else {
+        filteredByCat = products;
+      }
+
+      if (state.selectedColors.length > 0) {
+        filteredByColor = state.filteredProductsByColor;
+      } else {
+        filteredByColor = products;
+      }
+
+      if (state.selectedPrices.length > 0) {
+        filteredByPrice = state.filteredProductsByPrice;
+      } else {
+        filteredByPrice = products;
+      }
+
+      const filtered = products.filter((product) => {
+        return filteredByCat.includes(product) &&
+          filteredByColor.includes(product) &&
+          filteredByPrice.includes(product);
+      });
+      return {filtered};
+    })
+
   }
 
   render() {
@@ -237,10 +303,10 @@ class Catalog extends Component {
             </div>
             <div className={styles.CatalogMain}>
               {
-                this.state.filteredProductsByPrice.length > 0
-                  ?  <Products products={this.state.filteredProductsByPrice}/>
+                this.state.filtered.length > 0
+                  ?  <Products products={this.state.filtered}/>
                   : this.state.products.length > 0
-                    ? <Products products={this.state.products}/>
+                    ? <p className={styles.CatalogWarning}>Nothing found matching you parameters.</p>
                     : <Loader/>
               }
             </div>
