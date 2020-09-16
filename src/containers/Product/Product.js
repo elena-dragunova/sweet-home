@@ -5,6 +5,7 @@ import Loader from '../../components/UI/Loader/Loader';
 import { Rating } from '@material-ui/lab';
 import QuantityInput from '../../components/UI/QuantityInput/QuantityInput';
 import Button from '../../components/UI/Button/Button';
+import ProductBreadcrumbs from '../../components/UI/ProductBreadcrumbs/ProductBreadcrumbs';
 
 class Product extends Component {
   constructor(props) {
@@ -56,6 +57,9 @@ class Product extends Component {
         {
           this.state.product
           ? <div className={styles.Product}>
+              <ProductBreadcrumbs cat={this.state.product.category}
+                                  sub={this.state.product.subcategory}
+                                  name={this.state.product.name}/>
               <div className="container">
                 <div className={styles.ProductMain}>
                   <div className={styles.ProductImages}>
