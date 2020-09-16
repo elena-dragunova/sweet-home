@@ -15,9 +15,25 @@ export function fetchProductsStart() {
 }
 
 export function fetchProductsSuccess(products) {
+  const currentProducts = [];
+  Object.entries(products).forEach(([key, category]) => {
+    return category.map((sub) => {
+      const category = key;
+      return Object.values(sub).map((item) => {
+        return item.forEach((product) => {
+
+          currentProducts.push({
+            ...product,
+            category: category,
+            subcategory: Object.keys(sub)[0],
+          });
+        })
+      })
+    })
+  });
   return {
     type: FETCH_PRODUCTS_SUCCESS,
-    products,
+    products: currentProducts,
   }
 }
 

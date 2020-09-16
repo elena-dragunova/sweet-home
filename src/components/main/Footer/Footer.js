@@ -24,49 +24,49 @@ export default () => (
             <ul className={styles.FooterMenu}>
               <li>
                 <NavLink to="/my-account"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   My Account</NavLink>
               </li>
               <li>
                 <NavLink to="/track"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Track Your Order</NavLink>
               </li>
               <li>
                 <NavLink to="/faq"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   FAQs</NavLink>
               </li>
               <li>
                 <NavLink to="/payment-methods"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Payment Methods</NavLink>
               </li>
               <li>
                 <NavLink to="/shipping-guide"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Shipping Guide</NavLink>
               </li>
               <li>
                 <NavLink to="/products-support"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Products Support</NavLink>
               </li>
               <li>
                 <NavLink to="/gift-card-balance"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Gift Card Balance</NavLink>
@@ -79,42 +79,42 @@ export default () => (
             <ul className={styles.FooterMenu}>
               <li>
                 <NavLink to="/about"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   About Sweet Home</NavLink>
               </li>
               <li>
                 <NavLink to="/guarantees"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Our Guarantees</NavLink>
               </li>
               <li>
                 <NavLink to="/terms"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Terms and Conditions</NavLink>
               </li>
               <li>
                 <NavLink to="/privacy-policy"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Privacy Policy</NavLink>
               </li>
               <li>
                 <NavLink to="/return-policy"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Return Policy</NavLink>
               </li>
               <li>
                 <NavLink to="/delivery"
-                         exact="exact"
+                         exact
                          className={styles.FooterLink}
                          activeClassName={styles.Active}>
                   Delivery and Return</NavLink>

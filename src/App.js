@@ -25,8 +25,10 @@ class App extends Component {
       <Layout>
         <Switch>
           <Route path="/auth" component={Auth}/>
-          <Route path="/catalog/:type" component={Catalog}/>
-          <Route path="/catalog/:id" component={Product}/>
+          <Route path="/catalog" exact component={Catalog}/>
+          <Route path="/catalog/:type" exact component={Catalog}/>
+          <Route path="/catalog/:type/:sub" exact component={Catalog}/>
+          <Route path="/catalog/:id" exact component={Product}/>
           <Route path="/blog" component={Blog}/>
           <Route path="/blog/:id" component={Article}/>
           <Route path="/contacts" component={Contacts}/>
