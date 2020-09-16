@@ -29,7 +29,6 @@ class Product extends Component {
     if (catalogUploaded || anotherDynamicRoute) {
       this.setCurrentProduct();
     }
-    console.log(this.state)
   }
 
   setCurrentProduct() {
@@ -40,10 +39,16 @@ class Product extends Component {
   }
 
   handleQuantityChange(quantity) {
-    this.setState((state) => {
+    this.setState(() => {
       return {productQuantity: quantity}
     })
   };
+
+  changeSelectedOption(optionIndex) {
+    this.setState(() => {
+      return {selectedOption: optionIndex}
+    })
+  }
 
   render() {
     return (
@@ -58,7 +63,8 @@ class Product extends Component {
                       this.state.product.options.map((option, index) => {
                         return (
                           <div key={index}
-                               className={styles.ImageWrapper}>
+                               className={styles.ImageWrapper}
+                               onClick={this.changeSelectedOption.bind(this, index)}>
                             <img src={option.image} alt=""/>
                           </div>
                         )
@@ -84,8 +90,17 @@ class Product extends Component {
                         this.state.product.options.map((option, index) => {
                           {
                             if (index === this.state.selectedOption) {
-                              return (<div key={index} className={styles.ActiveColor} style={{background: option.color}}/>)
-                            } return (<div key={index} className={styles.Color} style={{background: option.color}}/>)
+                              return (
+                                <div key={index}
+                                     className={styles.ActiveColor}
+                                     style={{background: option.color}}/>
+                                )
+                            } return (
+                              <div key={index}
+                                   className={styles.Color}
+                                   style={{background: option.color}}
+                                   onClick={this.changeSelectedOption.bind(this, index)}/>
+                              )
                           }
                         })
                       }
