@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styles from './Drawer.module.css'
 import Overlay from '../Overlay/Overlay'
+import CartDrawer from '../../CartDrawer/CartDrawer';
 
 class Drawer extends Component {
   render() {
@@ -15,7 +16,7 @@ class Drawer extends Component {
     return (
       <React.Fragment>
         <div className={classes.join(' ')}>
-          Here will be Cart
+          <CartDrawer onClose={this.props.onClose}/>
         </div>
         { this.props.isOpen ? <Overlay onClick={this.props.onClose}/> : null }
       </React.Fragment>

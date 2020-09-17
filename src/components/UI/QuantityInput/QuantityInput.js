@@ -10,6 +10,14 @@ class QuantityInput extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.quantity !== this.state.quantity) {
+      this.setState(() => {
+        return {quantity: nextProps.quantity}
+      })
+    }
+  }
+
   decrementButtonHandler () {
     this.setState((state) => {
       if (state.quantity !== this.props.minVal) {

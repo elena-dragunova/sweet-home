@@ -8,7 +8,18 @@ export default function cartReducer (state = initialState, action) {
   switch(action.type) {
     case ADD_PRODUCT_TO_CART:
       const cart = state.cart;
-      cart.push(action.product);
+      const currentItemIndex = cart.findIndex((item) => {
+        return item.id === action.product.id;
+      });
+      if (currentItemIndex >= 0) {
+        cart.splice(currentItemIndex, 1, {
+          ...cart[currentItemIndex],
+          quantity: cart[currentItemIndex].quantity + action.product.quantity,
+        })
+      } else {
+        cart.push(action.product);
+      }
+
       return {
         ...state,
         cart,

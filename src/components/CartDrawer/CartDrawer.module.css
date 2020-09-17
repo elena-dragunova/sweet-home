@@ -1,0 +1,93 @@
+.CartDrawerTitle {
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  position: relative;
+}
+
+.CartDrawerTitle h2 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.CloseBtn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -3px;
+  right: 0;
+}
+
+.CloseBtn button {
+  width: 30px;
+  height: 30px;
+}
+
+.CloseBtn button i {
+  font-size: 22px;
+}
+
+.CartItem {
+  display: flex;
+  padding: 16px 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.CartItemImage {
+  width: 100px;
+}
+
+.ImageWrapper {
+  width: 100%;
+  height: 0;
+  padding-top: 120%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ImageWrapper img {
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -50%;
+  right: -50%;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  max-width: none;
+}
+
+.CartItemInfo {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.CartItemInfo p {
+  margin-bottom: 10px;
+}
+
+.EmptyCart {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.CartTotal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.CartTotal h4 {
+  text-transform: uppercase;
+}
+
+.TotalPrice {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.CheckoutBtn button {
+  width: 100%;
+  margin-top: 20px;
+}

@@ -4,7 +4,7 @@
   top: 0;
   bottom: 0;
   width: 80%;
-  max-width: 300px;
+  max-width: 350px;
   padding: 20px 10px;
   box-sizing: border-box;
   background-color: #FFF;
@@ -14,5 +14,5 @@
 }
 
 .Drawer.close {
-  transform: translateX(300px);
+  transform: translateX(350px);
 }
