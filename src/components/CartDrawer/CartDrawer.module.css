@@ -87,7 +87,13 @@
   font-size: 18px;
 }
 
-.CheckoutBtn button {
+.WhiteBtn button {
   width: 100%;
   margin-top: 20px;
 }
+
+.CheckoutBtn button {
+  width: 100%;
+  margin-top: 10px;
+}
+

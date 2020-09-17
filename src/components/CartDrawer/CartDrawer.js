@@ -77,6 +77,12 @@ class CartDrawer extends Component {
                 </div>
                 <p>Shipping, taxes and discounts will be calculated at checkout.</p>
                 <Link to="/cart"
+                      className={styles.WhiteBtn}>
+                  <Button text="View Cart"
+                          buttonStyle="WhiteButton"
+                          onClick={this.props.onClose}/>
+                </Link>
+                <Link to="/"
                       className={styles.CheckoutBtn}>
                   <Button text="Checkout"
                           buttonStyle="AccentButton"
@@ -84,7 +90,7 @@ class CartDrawer extends Component {
                 </Link>
 
               </div>
-            : <p className={styles.EmptyCart}>Your cart is empty</p>
+            : <p className={styles.EmptyCart}>Your cart is currently empty</p>
         }
       </div>
     )

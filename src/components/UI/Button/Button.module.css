@@ -39,3 +39,22 @@
 .AccentButton:active {
   background-color: var(--black-color);
 }
+
+.WhiteButton {
+  padding: 10px 30px;
+  border: 2px solid lightgray;
+  border-radius: 4px;
+  background-color: var(--white-color);
+  color: var(--black-color);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.WhiteButton:hover,
+.WhiteButton:focus,
+.WhiteButton:active {
+  background-color: var(--breadcrumbs-color)
+}
