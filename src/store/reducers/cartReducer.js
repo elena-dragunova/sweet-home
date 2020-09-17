@@ -1,5 +1,6 @@
 import {
   ADD_PRODUCT_TO_CART,
+  DELETE_PRODUCT,
   TOGGLE_CART
 } from '../actions/actionTypes';
 
@@ -33,6 +34,14 @@ export default function cartReducer (state = initialState, action) {
       return {
         ...state,
         cart,
+      };
+    case DELETE_PRODUCT:
+      const currentCart = state.cart;
+      const itemIndex = currentCart.findIndex(item => item.id === action.product.id);
+      currentCart.splice(itemIndex, 1);
+      return {
+        ...state,
+        cart: currentCart,
       };
     default:
       return state;

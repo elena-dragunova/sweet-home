@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import CloseButton from '../UI/CloseButton/CloseButton';
 import QuantityInput from '../UI/QuantityInput/QuantityInput';
 import Button from '../UI/Button/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { deleteProduct } from '../../store/actions/cart';
 
 class CartDrawer extends Component {
   constructor(props) {
@@ -27,7 +28,10 @@ class CartDrawer extends Component {
         cart,
       }
     })
+  }
 
+  deleteButtonHandler (product) {
+    this.props.deleteProduct(product);
   }
 
   render() {
@@ -67,6 +71,9 @@ class CartDrawer extends Component {
                                          maxVal={item.maxVal}
                                          onChange={this.handleQuantityChange.bind(this, item)}/>
                         </div>
+                        <div className={styles.DeleteBtn}>
+                          <CloseButton onClick={this.deleteButtonHandler.bind(this, item)}/>
+                        </div>
                       </div>
                     ))
                   }
@@ -103,4 +110,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(CartDrawer)
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteProduct: (product) => dispatch(deleteProduct(product)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartDrawer)

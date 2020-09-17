@@ -30,6 +30,7 @@
   display: flex;
   padding: 16px 0;
   border-bottom: 1px solid lightgray;
+  position: relative;
 }
 
 .CartItemImage {
@@ -97,3 +98,8 @@
   margin-top: 10px;
 }
 
+.DeleteBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

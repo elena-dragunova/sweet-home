@@ -1,9 +1,14 @@
-import axios from '../../axios';
-
 import {
-  ADD_PRODUCT_TO_CART,
   TOGGLE_CART,
+  ADD_PRODUCT_TO_CART,
+  DELETE_PRODUCT,
 } from './actionTypes';
+
+export function toggleCart() {
+  return {
+    type: TOGGLE_CART
+  }
+}
 
 
 export function addProductToCart(product) {
@@ -13,8 +18,9 @@ export function addProductToCart(product) {
   }
 }
 
-export function toggleCart() {
+export function deleteProduct(product) {
   return {
-    type: TOGGLE_CART
+    type: DELETE_PRODUCT,
+    product,
   }
 }

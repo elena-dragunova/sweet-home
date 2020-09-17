@@ -62,7 +62,7 @@ class Product extends Component {
       image: this.state.product.options[selectedOption].image,
       color: this.state.product.options[selectedOption].color,
       quantity: this.state.productQuantity,
-      maxVal: this.state.product.quantity,
+      maxVal: this.state.product.options[selectedOption].quantity,
     };
     this.props.addProductToCart(product);
     this.props.toggleCart();
