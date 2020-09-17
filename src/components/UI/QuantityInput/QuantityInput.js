@@ -13,22 +13,24 @@ class QuantityInput extends Component {
   decrementButtonHandler () {
     this.setState((state) => {
       if (state.quantity !== this.props.minVal) {
-        return {quantity: state.quantity--}
+        const newQuantity = state.quantity - 1;
+        this.props.onChange(newQuantity);
+        return {quantity: newQuantity}
       }
       return {state}
     });
-    this.props.onChange(this.state.quantity);
   }
 
   incrementButtonHandler () {
     this.setState((state) => {
       if (state.quantity !== this.props.maxVal) {
-        return {quantity: state.quantity++}
+        const newQuantity = state.quantity + 1;
+        this.props.onChange(newQuantity);
+        return {quantity: newQuantity}
       }
-
       return state;
     });
-    this.props.onChange(this.state.quantity);
+
   }
 
   render () {

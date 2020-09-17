@@ -6,6 +6,7 @@ import { Rating } from '@material-ui/lab';
 import QuantityInput from '../../components/UI/QuantityInput/QuantityInput';
 import Button from '../../components/UI/Button/Button';
 import ProductBreadcrumbs from '../../components/UI/ProductBreadcrumbs/ProductBreadcrumbs';
+import { addProductToCart } from '../../store/actions/cart';
 
 class Product extends Component {
   constructor(props) {
@@ -49,6 +50,21 @@ class Product extends Component {
     this.setState(() => {
       return {selectedOption: optionIndex}
     })
+  }
+
+  addToCartHandler() {
+    const selectedOption = this.state.selectedOption;
+    const product = {
+      id: this.state.product.id,
+      name: this.state.product.name,
+      price: this.state.product.price,
+      vendor: this.state.product.vendor,
+      image: this.state.product.options[selectedOption].image,
+      color: this.state.product.options[selectedOption].color,
+      quantity: this.state.productQuantity,
+    };
+    console.log(product)
+    this.props.addProductToCart(product);
   }
 
   render() {
@@ -116,7 +132,7 @@ class Product extends Component {
                                      minVal={1}
                                      maxVal={this.state.product.options[this.state.selectedOption].quantity}
                                      onChange={this.handleQuantityChange.bind(this)}/>
-                      <Button buttonStyle="AccentButton">
+                      <Button buttonStyle="AccentButton" onClick={this.addToCartHandler.bind(this)}>
                         <i className="fas fa-shopping-cart"></i>
                         Add To Cart
                       </Button>
@@ -163,4 +179,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Product)
+function mapDispatchToProps(dispatch) {
+  return {
+    addProductToCart: (product) => dispatch(addProductToCart(product)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
