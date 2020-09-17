@@ -19,7 +19,9 @@ class CartDrawer extends Component {
   handleQuantityChange(cartItem, quantity) {
     this.setState(() => {
       const cart = this.props.cart.cart;
-      const currentItemIndex = cart.findIndex(item => item.id === cartItem.id);
+      const currentItemIndex = cart.findIndex(item => {
+        return item.id === cartItem.id && item.color === cartItem.color;
+      });
       cart.splice(currentItemIndex, 1, {
         ...cart[currentItemIndex],
         quantity,
@@ -56,7 +58,7 @@ class CartDrawer extends Component {
                   {
                     this.state.cart.map((item) => (
                       <div className={styles.CartItem}
-                           key={item.id}>
+                           key={item.id + item.color}>
                         <div className={styles.CartItemImage}>
                           <div className={styles.ImageWrapper}>
                             <img src={item.image} alt=""/>

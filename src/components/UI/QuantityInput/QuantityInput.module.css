@@ -17,6 +17,11 @@
   cursor: pointer;
 }
 
+.QuantityInput button:hover,
+.QuantityInput button:focus {
+  color: var(--gold-color);
+}
+
 .QuantityInputValue {
   font-weight: 700;
   font-size: 18px;

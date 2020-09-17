@@ -76,6 +76,15 @@
   margin-bottom: 8px;
 }
 
+.CartItemActions {
+  display: flex;
+  align-items: center;
+}
+
+.Remove {
+  margin-left: 10px;
+}
+
 .CartItemTotal {
   width: 200px;
   text-align: right;

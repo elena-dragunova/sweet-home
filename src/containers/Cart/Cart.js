@@ -18,7 +18,9 @@ class Cart extends Component {
   handleQuantityChange(cartItem, quantity) {
     this.setState(() => {
       const cart = this.props.cart.cart;
-      const currentItemIndex = cart.findIndex(item => item.id === cartItem.id);
+      const currentItemIndex = cart.findIndex(item => {
+        return item.id === cartItem.id && item.color === cartItem.color;
+      });
       cart.splice(currentItemIndex, 1, {
         ...cart[currentItemIndex],
         quantity,
@@ -37,7 +39,7 @@ class Cart extends Component {
     const totalItemPrice = (cartItem.price * cartItem.quantity).toFixed(2);
 
     return (
-      <div key={cartItem.id} className={styles.CartItem}>
+      <div key={cartItem.id + cartItem.color} className={styles.CartItem}>
 
         <div className={styles.CartItemImage}>
           <div className={styles.ImageWrapper}>
@@ -54,9 +56,11 @@ class Cart extends Component {
                            minVal={1}
                            maxVal={cartItem.maxVal}
                            onChange={this.handleQuantityChange.bind(this, cartItem)}/>
-            <Button text="Remove"
-                    buttonStyle="MainButton"
-                    onClick={this.removeItemHandler.bind(this, cartItem)}/>
+            <div className={styles.Remove}>
+              <Button text="Remove"
+                      buttonStyle="MainButton"
+                      onClick={this.removeItemHandler.bind(this, cartItem)}/>
+            </div>
           </div>
         </div>
 

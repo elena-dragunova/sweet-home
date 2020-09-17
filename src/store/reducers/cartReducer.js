@@ -20,7 +20,7 @@ export default function cartReducer (state = initialState, action) {
     case ADD_PRODUCT_TO_CART:
       const cart = state.cart;
       const currentItemIndex = cart.findIndex((item) => {
-        return item.id === action.product.id;
+        return item.id === action.product.id && item.color === action.product.color;
       });
       if (currentItemIndex >= 0) {
         cart.splice(currentItemIndex, 1, {
@@ -37,7 +37,9 @@ export default function cartReducer (state = initialState, action) {
       };
     case DELETE_PRODUCT:
       const currentCart = state.cart;
-      const itemIndex = currentCart.findIndex(item => item.id === action.product.id);
+      const itemIndex = currentCart.findIndex(item => {
+        return item.id === action.product.id && item.color === action.product.color
+      });
       currentCart.splice(itemIndex, 1);
       return {
         ...state,
