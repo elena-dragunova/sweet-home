@@ -23,10 +23,12 @@ export default function cartReducer (state = initialState, action) {
         return item.id === action.product.id && item.color === action.product.color;
       });
       if (currentItemIndex >= 0) {
-        cart.splice(currentItemIndex, 1, {
-          ...cart[currentItemIndex],
-          quantity: cart[currentItemIndex].quantity + action.product.quantity,
-        })
+        if (cart[currentItemIndex].quantity + action.product.quantity <= cart[currentItemIndex].maxVal) {
+          cart.splice(currentItemIndex, 1, {
+            ...cart[currentItemIndex],
+            quantity: cart[currentItemIndex].quantity + action.product.quantity,
+          })
+        }
       } else {
         cart.push(action.product);
       }
