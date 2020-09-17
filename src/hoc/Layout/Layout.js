@@ -3,28 +3,18 @@ import styles from './Layout.module.css'
 import Drawer from '../../components/UI/Drawer/Drawer'
 import Header from '../../components/main/Header/Header'
 import Footer from '../../components/main/Footer/Footer'
+import { connect } from 'react-redux'
+import { toggleCart } from '../../store/actions/cart';
 
 class Layout extends Component {
-  state = {
-    showCart: false,
-  };
-
-  toggleCartHandler = () => {
-    this.setState({
-      showCart: !this.state.showCart,
-    });
-  };
-
-  cartCloseHandler = () => {
-    this.setState({
-      showCart: false,
-    });
-  };
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
       <div className={styles.Layout}>
-        <Header onCartClick={this.toggleCartHandler} />
+        <Header onCartClick={this.props.toggleCart} />
 
         <main className={styles.main}>
           {this.props.children}
@@ -32,11 +22,23 @@ class Layout extends Component {
 
         <Footer />
 
-        <Drawer isOpen={this.state.showCart}
-                onClose={this.cartCloseHandler}/>
+        <Drawer isOpen={this.props.showCart}
+                onClose={this.props.toggleCart}/>
       </div>
     )
   }
 }
 
-export default Layout
+function mapStateToProps(state) {
+  return {
+    showCart: state.cart.open,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    toggleCart: () => dispatch(toggleCart()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)

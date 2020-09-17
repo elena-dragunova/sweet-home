@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import styles from './Product.module.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Loader from '../../components/UI/Loader/Loader';
 import { Rating } from '@material-ui/lab';
 import QuantityInput from '../../components/UI/QuantityInput/QuantityInput';
 import Button from '../../components/UI/Button/Button';
 import ProductBreadcrumbs from '../../components/UI/ProductBreadcrumbs/ProductBreadcrumbs';
-import { addProductToCart } from '../../store/actions/cart';
+import { addProductToCart, toggleCart } from '../../store/actions/cart';
 
 class Product extends Component {
   constructor(props) {
@@ -65,6 +65,7 @@ class Product extends Component {
       maxVal: this.state.product.quantity,
     };
     this.props.addProductToCart(product);
+    this.props.toggleCart();
   }
 
   render() {
@@ -182,6 +183,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addProductToCart: (product) => dispatch(addProductToCart(product)),
+    toggleCart: () => dispatch(toggleCart()),
   }
 }
 
